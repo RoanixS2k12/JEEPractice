@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package jeepractice;
+package org.github.roanixs.jee;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.*;
@@ -15,6 +16,9 @@ import javax.persistence.*;
  */
 @Entity
 public class Application {
+    
+    @ManyToMany(mappedBy = "appIds")
+    private Collection<Member> membersIds;
     
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
