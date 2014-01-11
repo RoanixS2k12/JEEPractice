@@ -12,7 +12,6 @@ import java.util.Date;
  * @author jocouma1
  */
 public class Application {
-
     
     private String name;
     
@@ -21,6 +20,11 @@ public class Application {
     private Date releaseDate;
     
     private URL website;
+
+    public Application()
+    {
+        
+    }
     
     public String getName()
     {
