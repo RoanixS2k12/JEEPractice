@@ -6,19 +6,36 @@ package jeepractice;
 
 import java.net.URL;
 import java.util.Date;
+import javax.annotation.Generated;
+import javax.persistence.*;
 
 /**
  *
  * @author jocouma1
  */
+@Entity
 public class Application {
     
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Basic(optional = false)
+    @Column(name = "APPLICATION_ID", nullable = false)
+    private int ID;
+    
+    @Basic(optional = false)
+    @Column(name = "APPLICATION_NAME", nullable = false, length = 255)
     private String name;
     
+    @Basic(optional = false)
+    @Column(name = "APPLICATION_VERSION", nullable = false)
     private int version;
     
+    @Temporal(TemporalType.DATE)
+    @Column(name = "APPLICATION_RLSDATE", nullable = false)
     private Date releaseDate;
     
+    @Basic(optional = false)
+    @Column(name = "APPLICATION_URL", nullable = false, length = 255)
     private URL website;
 
     public Application()
