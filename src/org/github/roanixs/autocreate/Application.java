@@ -154,5 +154,6 @@ public class Application implements Serializable {
     public String toString() {
         return "org.github.roanixs.autocreate.Application[ applicationId=" + applicationId + " ]";
     }
+ 
     
 }

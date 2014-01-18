@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Platform.findAll", query = "SELECT p FROM Platform p"),
     @NamedQuery(name = "Platform.findByPlatformId", query = "SELECT p FROM Platform p WHERE p.platformId = :platformId"),
     @NamedQuery(name = "Platform.findByPlatformName", query = "SELECT p FROM Platform p WHERE p.platformName = :platformName"),
-    @NamedQuery(name = "Platform.findByPlatformVersion", query = "SELECT p FROM Platform p WHERE p.platformVersion = :platformVersion")})
+    @NamedQuery(name = "Platform.findByPlatformVersion", query = "SELECT p FROM Platform p WHERE p.platformVersion = :platformVersion"),
+    @NamedQuery(name = "Platform.findByPlatformNameAndVersion", query = "SELECT p FROM Platform p WHERE p.platformName = :platformName AND p.platformVersion = :platformVersion")})
 public class Platform implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

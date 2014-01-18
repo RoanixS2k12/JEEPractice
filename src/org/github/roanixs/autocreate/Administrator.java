@@ -5,12 +5,17 @@
 package org.github.roanixs.autocreate;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Persistence;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -39,6 +44,37 @@ public class Administrator implements Serializable {
     @Column(name = "ADMINISTRATOR_PASSWORD")
     private String administratorPassword;
 
+    public void addApplication(Application app, String platformName, String platformVersion)
+    {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("simpleAppShopPU");
+        EntityManager em = emf.createEntityManager();
+    
+        Platform p = em.
+        
+        Platform p = em.find(Platform.class, 1);
+        em.getTransaction().begin();
+        
+        try
+        {
+            em.persist(app);
+            System.out.println("Application now in persistence");
+        }
+        catch(EntityExistsException e)
+        {
+            System.out.println("App already exists");
+            em.getTransaction().rollback();
+        }
+        
+        em.getTransaction().commit();
+        
+        em.close();
+        emf.close(); 
+    
+    }
+    
+    
+    
+    
     public Administrator() {
     }
 
