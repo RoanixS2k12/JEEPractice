@@ -6,6 +6,8 @@ package org.github.roanixs.autocreate;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
+import javax.annotation.Generated;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,34 +50,44 @@ public class Administrator implements Serializable {
     {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("simpleAppShopPU");
         EntityManager em = emf.createEntityManager();
-    
-        Platform p = em.
-        
-        Platform p = em.find(Platform.class, 1);
-        em.getTransaction().begin();
-        
-        try
+
+        Platform p = em.createNamedQuery("Platform.findByPlatformNameAndVersion", Platform.class)
+                            .setParameter("platformName", platformName)
+                            .setParameter("platformVersion", platformVersion)
+                            .getSingleResult();
+
+        if(p != null)
         {
-            em.persist(app);
-            System.out.println("Application now in persistence");
+            app.setApplicationPlatformId(p);
+
+            em.getTransaction().begin();
+
+            try
+            {
+                em.persist(app);
+                System.out.println("Application now in persistence");
+            }
+            catch(EntityExistsException e)
+            {
+                System.out.println("App already exists");
+                em.getTransaction().rollback();
+            }
+
+            em.getTransaction().commit();
+
+            System.out.println("Administrator adding application succeded");
         }
-        catch(EntityExistsException e)
+        else
         {
-            System.out.println("App already exists");
-            em.getTransaction().rollback();
+            System.out.println("Administrator couldn't add an app to the db");
         }
-        
-        em.getTransaction().commit();
-        
+
         em.close();
-        emf.close(); 
-    
+        emf.close();
     }
-    
-    
-    
-    
+
     public Administrator() {
+
     }
 
     public Administrator(Integer administratorId) {

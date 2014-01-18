@@ -28,8 +28,10 @@ public class JEEPractice {
     
         JEEPractice jee = new JEEPractice();
         
-        jee.testAddAdmin();
-       
+        //jee.testAddAdmin();
+
+        jee.testAdminAddApp();
+
     }
     
     
@@ -61,7 +63,25 @@ public class JEEPractice {
         emf.close();
         
     }
-    
+
+    public void testAdminAddApp()
+    {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("simpleAppShopPU");
+        EntityManager em = emf.createEntityManager();
+
+        Administrator a = em.find(Administrator.class, 1);
+
+        Application app = new Application();
+        app.setApplicationId(100);
+        app.setApplicationName("Test App Add by Admin");
+        app.setApplicationReleaseDate(Calendar.getInstance().getTime());
+        app.setApplicationWebsite("www.testappbyadmin.com");
+        app.setApplicationVersion("1.0.0");
+
+        a.addApplication(app, "Windows", "Height");
+
+    }
+
     public void testAddMember()
     {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("simpleAppShopPU");
