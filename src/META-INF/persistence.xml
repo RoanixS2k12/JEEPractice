@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="simpleAppShopPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>org.github.roanixs.autocreate.Administrator</class>
+    <class>org.github.roanixs.autocreate.Sequence</class>
+    <class>org.github.roanixs.autocreate.Customer</class>
+    <class>org.github.roanixs.autocreate.Member1</class>
+    <class>org.github.roanixs.autocreate.PurchaseOrder</class>
+    <class>org.github.roanixs.autocreate.Application</class>
+    <class>org.github.roanixs.autocreate.Download</class>
+    <class>org.github.roanixs.autocreate.ProductCode</class>
+    <class>org.github.roanixs.autocreate.DiscountCode</class>
+    <class>org.github.roanixs.autocreate.Product</class>
+    <class>org.github.roanixs.autocreate.MicroMarket</class>
+    <class>org.github.roanixs.autocreate.Manufacturer</class>
+    <class>org.github.roanixs.autocreate.Platform</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/SimpleAppShop;create=true"/>
+      <property name="javax.persistence.jdbc.user" value="app"/>
+      <property name="javax.persistence.jdbc.password" value="app"/>
+    </properties>
+  </persistence-unit>
+</persistence>
+
+
