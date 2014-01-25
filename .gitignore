@@ -1,5 +1,8 @@
 /lib/
 /out/
 /.idea/
+/JavaApplication8/nbproject/private/
 /nbproject/
 /build/
+nbbuild.xml
+/src/META-INF/persistence.xml

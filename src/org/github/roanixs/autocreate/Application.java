@@ -71,7 +71,7 @@ public class Application implements Serializable {
         this.applicationId = applicationId;
         this.applicationName = applicationName;
         this.applicationVersion = applicationVersion;
-}
+    }
 
     public Integer getApplicationId() {
         return applicationId;
